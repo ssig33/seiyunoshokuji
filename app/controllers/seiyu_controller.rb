@@ -1,0 +1,2 @@
+class SeiyuController < ApplicationController
+end

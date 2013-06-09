@@ -1,0 +1,14 @@
+en:
+  hello: "Hello world"
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: '入力値が不正です、多分なんか必須のやつ入れてません'
+  date:
+    formats:
+      default: '%Y年%m月%d日'
+  time:
+    formats:
+      default: '%Y年%m月%d日 %H時%M分'
+

@@ -1,0 +1,16 @@
+!!!
+%title=content_for?(:title) ? yield(:title) : '声優の食事'
+= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+= javascript_include_tag "application", "data-turbolinks-track" => true
+= csrf_meta_tags
+%h1=link_to '声優の食事', '/'
+= yield
+-unless login?
+  %h3 いますぐログインして声優の食事の情報を登録
+  %p=link_to image_tag('twitter.png'), '/auth/twitter'
+-else
+  %p=link_to 'ログアウト', session_url, method: 'DELETE'
+
+.none
+  %span#controller=params[:controller]
+  %span#action=params[:action]

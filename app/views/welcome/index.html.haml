@@ -1,0 +1,54 @@
+-if login?
+  %h3 声優の食事の情報を登録
+  .register
+    =t flash[:error] if flash[:error]
+    =form_for Meal.new do |f|
+      %table
+        =f.fields_for Seiyu.new do |s|
+          %tr
+            %th=s.label :name, '声優の名前(必須)'
+            %td=s.text_field :name
+          %tr
+            %th=s.label :url, '声優のブログなどの URL'
+            %td=s.text_field :url
+        %tr
+          %th=f.label :at, 'その食事の日時(必須,YYYY/MM/DD hour:min:sec)'
+          %td=f.text_field :at
+        %tr
+          %th=f.label :url, 'その食事を食べたことがわかる URL(必須)'
+          %th=f.text_field :url
+        %tr
+          %th=f.label :description, '備考'
+          %th=f.text_field :description
+        %tr
+          %th(colspan=2) メニュー
+        %tr
+          %th 品目
+          %th カロリー(kcal)
+          %th 備考
+        %tr.menu
+          %td
+            %input(name = "meal[menu][][title]")
+          %td
+            %input(name = "meal[menu][][cal]")
+          %td
+            %input(name = "meal[menu][][description]")
+          %td
+            %button.delete{type: 'button'} 削除
+      %button#add{type: 'button'} メニュー追加
+      %p=f.submit '登録'
+
+%table
+  %tr
+    %th 声優
+    %th 日時
+    %th カロリー
+  -@list.includes(:seiyu).page(@page).each do |x|
+    %tr.autopagerize_page_element
+      %td=x.seiyu.name
+      %td=l x.at
+      %td=x.menus.sum(:cal)
+      %td=link_to '詳細', meal_url(x)
+  %tr.autopagerize_insert_before
+
+.pager=paginate @list.page(@page)

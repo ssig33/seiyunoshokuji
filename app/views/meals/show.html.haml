@@ -1,0 +1,22 @@
+=content_for :title do
+  #{@m.seiyu.name}の#{l @m.at}の食事 - 声優の携帯電話
+
+%h2
+  =#link_to @m.seiyu.name, seiyu_path(@m.seiyu)
+  =@m.seiyu.name
+  の
+  =l @m.at
+  の食事は
+  =@m.menus.sum(:cal)
+  キロカロリー
+%h3 メニュー
+%table
+  %tr
+    %th 品目
+    %th カロリー
+    %th 備考
+  -@m.menus.each do |m|
+    %tr
+      %td=m.title
+      %td #{m.cal} kcal
+      %td=m.description
