@@ -69,7 +69,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
-    libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -77,6 +76,7 @@ GEM
     minitest (4.7.4)
     multi_json (1.7.6)
     multipart-post (1.2.0)
+    mysql2 (0.3.11)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -98,7 +98,6 @@ GEM
     omniauth-twitter (0.0.16)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-openid (1.3.1)
@@ -121,7 +120,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
-    ref (1.0.5)
     ruby-openid (2.2.3)
     sass (3.2.9)
     sass-rails (4.0.0.rc1)
@@ -139,9 +137,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.7)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
-      ref
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
@@ -170,15 +165,14 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   kaminari
+  mysql2
   omniauth-facebook
   omniauth-oauth!
   omniauth-openid
   omniauth-twitter
-  pg
   rails (= 4.0.0.rc1)
   sass-rails (~> 4.0.0.rc1)
   sqlite3
-  therubyracer
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
