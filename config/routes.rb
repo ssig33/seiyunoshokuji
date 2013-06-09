@@ -4,6 +4,8 @@ Seiyunoshokuji::Application.routes.draw do
   
   post 'meals' => 'meals#create'
   get 'meal/:id' => 'meals#show', as: :meal
+  get 'meal/edit/:id' => 'meals#edit', as: :meal_edit
+  patch 'meal/:id' => 'meals#update'
 
   root to: 'welcome#index'
 end

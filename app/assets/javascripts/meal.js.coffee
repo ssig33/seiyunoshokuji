@@ -4,6 +4,7 @@
 ready = ->
   $('#add').click ->
     $('.menu').last().after($('.menu').first().outerHTML())
+    $('.menu').last().find('input').val('')
 $(document).on('page:change', ready)
 $ ->
   ready()

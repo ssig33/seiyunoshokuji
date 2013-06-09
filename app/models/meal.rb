@@ -10,4 +10,14 @@ class Meal < ActiveRecord::Base
     menu.each{|x| meal.menus.create x}
     meal
   end
+
+  def update params
+    self.at = params[:at]
+    self.url = params[:url]
+    self.description = params[:description]
+    self.save
+    self.menus.delete_all
+    params[:menu].each{|x| self.menus.create x}
+    self
+  end
 end

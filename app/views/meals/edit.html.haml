@@ -1,0 +1,30 @@
+=form_for @m do |f|
+  %table
+    %tr
+      %th 声優の名前
+      %td=@m.seiyu.name
+    %tr
+      %th=f.label :at, 'その食事の日時(必須,YYYY/MM/DD hour:min:sec)'
+      %td=f.text_field :at
+    %tr
+      %th=f.label :url, 'その食事を食べたことがわかる URL(必須)'
+      %th=f.text_field :url
+    %tr
+      %th=f.label :description, '備考'
+      %th=f.text_field :description
+    %tr
+      %th(colspan=2) メニュー
+    %tr
+      %th 品目
+      %th カロリー(kcal)
+      %th 備考
+    -@m.menus.each do |menu|
+      =f.fields_for menu do |m|
+        %tr.menu
+          %td=m.text_field :title, name: 'meal[menu][][title]'
+          %td=m.text_field :cal, name: 'meal[menu][][cal]'
+          %td=m.text_field :description, name: 'meal[menu][][description]'
+          %td
+            %button.delete{type: 'button'} 削除
+  %button#add{type: 'button'} メニュー追加
+  %p=f.submit '更新'

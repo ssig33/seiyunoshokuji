@@ -20,3 +20,6 @@
       %td=m.title
       %td #{m.cal} kcal
       %td=m.description
+-if login?
+  %p
+    =link_to '編集', meal_edit_path(@m)

@@ -9,6 +9,14 @@ class MealsController < ApplicationController
     @m = Meal.find params[:id]
   end
 
+  def edit
+    @m = Meal.find params[:id]
+  end
+
+  def update
+    redirect_to meal_path Meal.find(params[:id]).update(meal_params)
+  end
+
   def meal_params
     params.permit({
       meal: [
